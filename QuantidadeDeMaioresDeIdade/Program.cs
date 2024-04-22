@@ -1,22 +1,27 @@
-﻿// Faça um programa que receba a idade de 10 pessoas e mostre a quantidade de maiores e menores de idade.
-int currentPersonAge = 0, minorCount = 0, majorCount = 0;
+﻿int currentPersonAge = 0, minorCount = 0, majorCount = 0;
 
 do
 {
     Console.Write($"Diga a idade da pessoa {(minorCount + majorCount) + 1}: ");
     currentPersonAge =  int.Parse(Console.ReadLine());
-    
-    if (currentPersonAge < 0)
+
+    switch (currentPersonAge)
     {
-        Console.WriteLine("\n-> Idade não pode ser negativa, tente novamente.\n");
-    }
-    else if (currentPersonAge < 18)
-    {
-        minorCount++;
-    }
-    else
-    {
-        majorCount++;
+        case < 0:
+            Console.WriteLine("\n-> Idade não pode ser negativa, tente novamente.\n");
+            break;
+        case > 100:
+            Console.WriteLine("\n-> Idade inválida, tente novamente.\n");
+            break;
+        case < 18:
+            minorCount++;
+            break;
+        case > 18:
+            majorCount++;
+            break;
+        default:
+            Console.WriteLine("\n-> Entrada inválida, tente novamente.");
+            break;
     }
 }
 while (minorCount + majorCount < 10);
